@@ -1,6 +1,4 @@
-package com.cloudstone.gsms.common;
-
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+package com.cloudstone.gsms.mapper;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,9 +8,10 @@ import javax.persistence.Id;
 public class TrashManager {
     @Id
     @GeneratedValue
-    private long id;
+    private Integer id;
+
     private String name;
-    private long age;
+    private Integer age;
     private String phoneNumber;
     private String identityCardNumber;
     private String address;
@@ -21,7 +20,7 @@ public class TrashManager {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,7 +36,7 @@ public class TrashManager {
         return age;
     }
 
-    public void setAge(long age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

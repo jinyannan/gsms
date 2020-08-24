@@ -1,4 +1,4 @@
-package com.cloudstone.gsms.common;
+package com.cloudstone.gsms.dto;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
