@@ -1,8 +1,9 @@
-package com.cloudstone.gsms.mapper;
+package com.cloudstone.gsms.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class TrashManager {
@@ -10,13 +11,17 @@ public class TrashManager {
     @GeneratedValue
     private Integer id;
 
+    @NotNull(message = "姓名不得为空。")
     private String name;
+
+    //@Min(value = 18,message = "年龄不得小于18岁。")
     private Integer age;
+
     private String phoneNumber;
     private String identityCardNumber;
     private String address;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -32,7 +37,7 @@ public class TrashManager {
         this.name = name;
     }
 
-    public long getAge() {
+    public Integer getAge() {
         return age;
     }
 

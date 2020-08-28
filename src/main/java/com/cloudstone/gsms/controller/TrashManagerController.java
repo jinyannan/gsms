@@ -1,11 +1,18 @@
 package com.cloudstone.gsms.controller;
 
+import com.cloudstone.gsms.domain.TrashManager;
+import com.cloudstone.gsms.dto.Result;
+import com.cloudstone.gsms.enums.ResultEnum;
+import com.cloudstone.gsms.exception.GsmsException;
 import com.cloudstone.gsms.repository.TrashManagerRepository;
 import com.cloudstone.gsms.service.TrashManagerService;
-import com.cloudstone.gsms.mapper.TrashManager;
+import com.cloudstone.gsms.utils.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +33,7 @@ public class TrashManagerController {
     public List<TrashManager> findTrashManagerAll(){
         return trashManagerRepository.findAll();
     }
+
     @PostMapping("findTrashManagerByIdAndName/{id}")
     public List<TrashManager> findTrashManagerByIdAndName(@PathVariable Integer id, @RequestParam String name ){
         TrashManager trashManager = new TrashManager();
@@ -41,7 +49,7 @@ public class TrashManagerController {
         Optional<TrashManager> optional = trashManagerRepository.findById(id);
 
         TrashManager trashManager = null;
-        if (optional.isPresent() == true){
+        if (optional.isPresent()){
             trashManager = optional.get();
             trashManager.setAddress(address);
             trashManagerRepository.save(trashManager);
@@ -53,5 +61,21 @@ public class TrashManagerController {
     public List<TrashManager> addTrashManagerList(){
         List<TrashManager> list = trashManagerService.addTrashManagerList();
         return list;
+    }
+
+    @PostMapping("/addTrashManager")
+    public Result<TrashManager> addTrashManager(@Valid TrashManager trashManager, BindingResult bindingResult) throws Exception{
+        Result<TrashManager> result = new Result<>();
+        if (bindingResult.hasErrors()) {
+            //result = ResultUtil.fail(Objects.requireNonNull(bindingResult.getFieldError()).getDefaultMessage());
+            throw new GsmsException(ResultEnum.AGE_ERROR.getCode(), bindingResult.getFieldError().getDefaultMessage());
+        } else {
+            try {
+                result = ResultUtil.success(trashManagerRepository.save(trashManager));
+            } catch (Exception e) {
+                throw e;
+            }
+        }
+        return result;
     }
 }

@@ -1,6 +1,6 @@
 package com.cloudstone.gsms.service;
 
-import com.cloudstone.gsms.mapper.TrashManager;
+import com.cloudstone.gsms.domain.TrashManager;
 import com.cloudstone.gsms.repository.TrashManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class TrashManagerService {
     private TrashManagerRepository repository;
 
     @Transactional
-    public List<TrashManager> addTrashManagerList(){
+    public List<TrashManager> addTrashManagerList() {
         TrashManager trashManager1 = new TrashManager();
         trashManager1.setId(2);
         trashManager1.setAddress("test1");
@@ -34,5 +34,10 @@ public class TrashManagerService {
 //        list.add(trashManager2);
 
         return list;
+    }
+
+    @Transactional
+    public TrashManager addTrashManager(TrashManager trashManager) {
+        return repository.save(trashManager);
     }
 }
