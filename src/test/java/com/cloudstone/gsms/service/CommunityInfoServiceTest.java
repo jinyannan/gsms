@@ -1,6 +1,6 @@
 package com.cloudstone.gsms.service;
 
-import com.cloudstone.gsms.domain.CommunityInfo;
+import com.cloudstone.gsms.domain.CommunityInfoEntity;
 import com.cloudstone.gsms.dto.Result;
 import org.junit.Assert;
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class CommunityInfoServiceTest {
 
     @Test
     public void addCommunityInfoTest(){
-        Result<CommunityInfo> result =  communityInfoService.findCommunityInfoById(20);
+        Result<CommunityInfoEntity> result =  communityInfoService.findCommunityInfoById(20);
         Integer code = result.getCode();
         Assert.assertEquals(code, Integer.valueOf(0));
     }

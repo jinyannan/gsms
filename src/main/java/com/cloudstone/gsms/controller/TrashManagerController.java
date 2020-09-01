@@ -76,6 +76,7 @@ public class TrashManagerController {
                 throw e;
             }
         }
+
         return result;
     }
 }
