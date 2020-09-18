@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   servlet:
     context-path: /gsms
 default:
@@ -18,3 +18,24 @@ spring:
     show-sql: true
   devtools:
     add-properties: true
+logging:
+#  pattern:
+#    console: "%d - %msg%n"
+#  file:
+#    path: ./
+#    name: gsms.log
+#  level:
+#    root: info
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: 8081
+    mail:
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
+#  config: src/main/resources/logback-spring.xml

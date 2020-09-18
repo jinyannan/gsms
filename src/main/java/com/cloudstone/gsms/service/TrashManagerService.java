@@ -32,7 +32,7 @@ public class TrashManagerService {
         List<TrashManager> list = new ArrayList<>();
         list.add(trashManager1);
 //        list.add(trashManager2);
-
+        System.out.println("test");
         return list;
     }
 

@@ -7,6 +7,8 @@ import com.cloudstone.gsms.exception.GsmsException;
 import com.cloudstone.gsms.repository.TrashManagerRepository;
 import com.cloudstone.gsms.service.TrashManagerService;
 import com.cloudstone.gsms.utils.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,8 @@ public class TrashManagerController {
     private TrashManagerRepository trashManagerRepository;
     @Autowired
     private TrashManagerService trashManagerService;
+
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @GetMapping("/findTrashManagerById/{id}")
     public TrashManager findTrashManagerById(@PathVariable Integer id){
@@ -76,7 +80,8 @@ public class TrashManagerController {
                 throw e;
             }
         }
-
+        logger.info("test");
         return result;
     }
+
 }

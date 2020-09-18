@@ -27,4 +27,9 @@ public class CommunityInfoController {
     public Result<CommunityInfoEntity> findCommunityInfo(@PathVariable Integer id){
         return communityInfoService.findCommunityInfoById(id);
     }
+
+    @GetMapping("/findCommunityInfoByNameLike")
+    public Result<CommunityInfoEntity> findCommunityInfoByNameLike(@RequestParam String name){
+        return communityInfoService.findByNameLike(name);
+    }
 }
