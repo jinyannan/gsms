@@ -14,6 +14,8 @@ public class TrashManagerService {
     @Autowired
     private TrashManagerRepository repository;
 
+
+
     @Transactional
     public List<TrashManager> addTrashManagerList() {
         TrashManager trashManager1 = new TrashManager();
@@ -21,10 +23,10 @@ public class TrashManagerService {
         trashManager1.setAddress("test1");
         trashManager1.setName("test2");
         trashManager1.setAge(14);
-        repository.save(trashManager1);
 
-//        TrashManager trashManager2 = new TrashManager();
+        repository.save(trashManager1);
 //        trashManager2.setAddress("test2");
+//        TrashManager trashManager2 = new TrashManager();
 //        trashManager2.setName("test2");
 //        trashManager2.setAge(15);
 //        repository.save(trashManager2);

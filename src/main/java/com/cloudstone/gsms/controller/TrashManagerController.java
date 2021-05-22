@@ -7,6 +7,8 @@ import com.cloudstone.gsms.exception.GsmsException;
 import com.cloudstone.gsms.repository.TrashManagerRepository;
 import com.cloudstone.gsms.service.TrashManagerService;
 import com.cloudstone.gsms.utils.ResultUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-
+@Api
 @RestController
 @RequestMapping(value = "/trashmanager")
 public class TrashManagerController {
@@ -28,6 +30,7 @@ public class TrashManagerController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
+    @ApiOperation("根据id获取垃圾桶信息")
     @GetMapping("/findTrashManagerById/{id}")
     public TrashManager findTrashManagerById(@PathVariable Integer id){
         return trashManagerRepository.findById(id).orElse(null);
